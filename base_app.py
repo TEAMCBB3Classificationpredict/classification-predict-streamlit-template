@@ -66,17 +66,20 @@ def main():
 		# Creating a text box for user input
 		tweet_text = st.text_area("Enter Text","enter your sentence / tweet here")
 		st.info('Which classifier  to run to get the results')
-		option = st.radio('ML models',('logistic_regression_classifier','gradient_boost_classifier'))
+		option = st.radio('ML models',('Logistic_Regression_classifier','GradientBoostingClassifier','SGDClassifier'))
 		# Transforming user input with vectorizer
 		vect_text = tweet_cv.transform([tweet_text]).toarray()
 		# Load your .pkl file with the model of your choice + make predictions
 		# Try loading in multiple models to give the user a choice
-		if option  =='logistic_regression_classifier':
+		if option  =='Logistic_Regression_classifier':
 			logistic_regression_classifier = joblib.load(open(os.path.join("resources/logistic_regression_model.pkl"),"rb"))
 			prediction = logistic_regression_classifier.predict(vect_text)
-		elif option  =='gradient_boost_classifier':
-			gradient_boost_classifier = joblib.load(open(os.path.join("resources/gradient_boost_classifier_model.pkl"),"rb"))
+		elif option  =='GradientBoostingClassifier':
+			gradient_boost_classifier = joblib.load(open(os.path.join("resources/resources/GradientBoostingClassifier_model.pkl"),"rb"))
 			prediction = gradient_boost_classifier.predict(vect_text)
+		elif option  =='SGDClassifier':
+			gradient_boost_classifier = joblib.load(open(os.path.join("resources/SGDClassifier_model.pkl"),"rb"))
+			prediction = gradient_boost_classifier.predict(vect_text)	
 	# When model has successfully run, will print prediction
 	# You can use a dictionary or similar structure to make this output
 	# more human interpretable.
