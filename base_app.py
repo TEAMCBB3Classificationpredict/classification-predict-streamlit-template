@@ -75,7 +75,7 @@ def main():
 			logistic_regression_classifier = joblib.load(open(os.path.join("resources/logistic_regression_model.pkl"),"rb"))
 			prediction = logistic_regression_classifier.predict(vect_text)
 		elif option  =='GradientBoostingClassifier':
-			gradient_boost_classifier = joblib.load(open(os.path.join("resources/resources/GradientBoostingClassifier_model.pkl"),"rb"))
+			gradient_boost_classifier = joblib.load(open(os.path.join("resources/GradientBoostingClassifier_model.pkl"),"rb"))
 			prediction = gradient_boost_classifier.predict(vect_text)
 		elif option  =='SGDClassifier':
 			gradient_boost_classifier = joblib.load(open(os.path.join("resources/SGDClassifier_model.pkl"),"rb"))
