@@ -61,12 +61,12 @@ def main():
 			st.write(raw[['sentiment', 'message']]) # will write the df to the page
 
 	# Building out the predication page
-	if selection == "Prediction":
+	elif selection == "Prediction":
 		st.info("Prediction with ML Models")
 		# Creating a text box for user input
 		tweet_text = st.text_area("Enter Text","enter your sentence / tweet here")
 		st.info('Which classifier  to run to get the results')
-		option = st.radio('logistic_regression_classifier', 'gradient_boost_classifier')
+		option = st.radio('ML models',('logistic_regression_classifier','gradient_boost_classifier'))
 		# Transforming user input with vectorizer
 		vect_text = tweet_cv.transform([tweet_text]).toarray()
 		# Load your .pkl file with the model of your choice + make predictions
