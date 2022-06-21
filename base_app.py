@@ -65,7 +65,6 @@ def main():
 		st.info("Prediction with ML Models")
 		# Creating a text box for user input
 		tweet_text = st.text_area("Enter Text","Type Here")
-
 		option = st.radio('Which model to run to get the results',
 		('logistic_regression_classifier', 'gradient_boost_classifier'))
 		# Transforming user input with vectorizer
