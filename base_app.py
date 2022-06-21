@@ -63,21 +63,24 @@ def main():
 	if selection == "Prediction":
 		st.info("Prediction with ML Models")
 		# Creating a text box for user input
-		tweet_text = st.text_area("Enter Text","Type Here")
-
-		if st.button("Classify"):
-			# Transforming user input with vectorizer
-			vect_text = tweet_cv.transform([tweet_text]).toarray()
-			# Load your .pkl file with the model of your choice + make predictions
-			# Try loading in multiple models to give the user a choice
-			predictor = joblib.load(open(os.path.join("resources/logistic_regression_model.pkl"),"rb"))
-			predictor = joblib.load(open(os.path.join("resources/gradient_boost_classifier_model.pkl"),"rb"))
-			prediction = predictor.predict(vect_text)
-
-			# When model has successfully run, will print prediction
-			# You can use a dictionary or similar structure to make this output
-			# more human interpretable.
-			st.success("Text Categorized as: {}".format(prediction))
+		tweet_text = st.text_area("Enter Text","enter your sentence / tweet here")
+	option =['ML models']
+	if option = st.radio('Which classifier  to run to get the results',
+    ('logistic_regression_classifier', 'gradient_boost_classifier')):
+		# Transforming user input with vectorizer
+		vect_text = tweet_cv.transform([tweet_text]).toarray()
+		# Load your .pkl file with the model of your choice + make predictions
+		# Try loading in multiple models to give the user a choice
+		if option  =='logistic_regression_classifier':
+			logistic_regression_classifier = joblib.load(open(os.path.join("resources/logistic_regression_model.pkl"),"rb"))
+			prediction = logistic_regression_classifier.predict(vect_text)
+		else:
+			gradient_boost_classifier = joblib.load(open(os.path.join("resources/gradient_boost_classifier_model.pkl"),"rb"))
+			prediction = gradient_boost_classifier.predict(vect_text)
+		# When model has successfully run, will print prediction
+		# You can use a dictionary or similar structure to make this output
+		# more human interpretable.
+		st.success("Text Categorized as: {}".format(prediction))
 
 # Required to let Streamlit instantiate our web app.  
 if __name__ == '__main__':
