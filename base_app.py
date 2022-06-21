@@ -75,11 +75,11 @@ def main():
 			logistic_regression_classifier = joblib.load(open(os.path.join("resources/logistic_regression_model.pkl"),"rb"))
 			prediction = logistic_regression_classifier.predict(vect_text)
 		elif option  =='GradientBoostingClassifier':
-			gradient_boost_classifier = joblib.load(open(os.path.join("resources/GradientBoostingClassifier_model.pkl"),"rb"))
-			prediction = gradient_boost_classifier.predict(vect_text)
+			GradientBoostingClassifier = joblib.load(open(os.path.join("resources/GradientBoostingClassifier_model.pkl"),"rb"))
+			prediction = GradientBoostingClassifier.predict(vect_text)
 		elif option  =='SGDClassifier':
-			gradient_boost_classifier = joblib.load(open(os.path.join("resources/SGDClassifier_model.pkl"),"rb"))
-			prediction = gradient_boost_classifier.predict(vect_text)	
+			SGDClassifier = joblib.load(open(os.path.join("resources/SGDClassifier_model.pkl"),"rb"))
+			prediction =SGDClassifier .predict(vect_text)	
 	# When model has successfully run, will print prediction
 	# You can use a dictionary or similar structure to make this output
 	# more human interpretable.
