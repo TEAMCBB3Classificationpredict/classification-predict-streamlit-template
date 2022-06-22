@@ -80,10 +80,10 @@ def main():
 		elif option  =='SGDClassifier':
 			SGDClassifier = joblib.load(open(os.path.join("resources/SGDClassifier_model.pkl"),"rb"))
 			prediction =SGDClassifier .predict(vect_text)	
-		# When model has successfully run, will print prediction
-		# You can use a dictionary or similar structure to make this output
-		# more human interpretable.
-		st.success("Text Categorized as: {}".format(prediction))
+	# When model has successfully run, will print prediction
+	# You can use a dictionary or similar structure to make this output
+	# more human interpretable.
+	st.success("Text Categorized as: {}".format(prediction))
 
 # Required to let Streamlit instantiate our web app.  
 if __name__ == '__main__':
