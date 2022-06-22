@@ -85,10 +85,10 @@ def main():
 		# more human interpretable.
 		st.success("Text Categorized as: {}".format(prediction))
 		st.info('Text Categories')
-		st.markdown('**1** = **PRO** climate change.')
-		st.markdown('**2**= climate change **News**.')
-		st.markdown('**-1** = **Anti** climate change.')
-		st.markdown('**0** = climate change **Neutral**.')
+		st.markdown('**1** = **Pro**.')
+		st.markdown('**2**= **News**.')
+		st.markdown('**-1** = **Anti**.')
+		st.markdown('**0** = **Neutral**.')
 
 # Required to let Streamlit instantiate our web app.  
 if __name__ == '__main__':
