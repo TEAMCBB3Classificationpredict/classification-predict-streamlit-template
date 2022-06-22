@@ -47,9 +47,16 @@ def main():
 
 	# Creating sidebar with selection box -
 	# you can create multiple pages this way
-	options = ["Prediction", "Information"]
-	selection = st.sidebar.selectbox("Choose Option", options)
-
+	options = ["Home","Prediction", "Information","Team"]
+	with st.sidebar:
+		st.title('Menu')
+		selection = st.radio("Choose Option", options)
+	# Bulding the home page	
+	if selection == "Home":
+		st.info("Many companies are built around lessening one's environmental impact or carbon footprint."
+		"They offer products and services that are environmentally friendly and sustainable, in line with their values and ideals."
+		"They would like to determine how people perceive climate change and whether or not they believe it is a real threat."
+		"This would add to their market research efforts in gauging how their product/service may be received")
 	# Building out the "Information" page
 	if selection == "Information":
 		st.info("General Information")
@@ -89,6 +96,14 @@ def main():
 		st.markdown('**2**= **News**.')
 		st.markdown('**-1** = **Anti**.')
 		st.markdown('**0** = **Neutral**.')
+	#team mates names 	
+	if selection == "Team":
+		st.info("Team CBB3")
+		st.markdown("Elewani Tshikovhi")
+		st.markdown("Katlego Maponya")
+		st.markdown("Sinethemba Nongqoto")
+		st.markdown("Musa Mashaba")
+		st.markdown("Desree Maleka")
 
 # Required to let Streamlit instantiate our web app.  
 if __name__ == '__main__':
