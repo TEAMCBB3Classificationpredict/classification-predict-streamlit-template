@@ -84,6 +84,7 @@ def main():
 		# You can use a dictionary or similar structure to make this output
 		# more human interpretable.
 		st.success("Text Categorized as: {}".format(prediction))
+		st.info('category 1 = PRO climate change','category 2 = climate change news','category -1 = Anti climate change','category 0 = climate change Neutral')
 
 # Required to let Streamlit instantiate our web app.  
 if __name__ == '__main__':
