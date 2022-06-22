@@ -104,6 +104,7 @@ def main():
 		st.markdown("Sinethemba Nongqoto")
 		st.markdown("Musa Mashaba")
 		st.markdown("Desree Maleka")
+		st.markdown("Zothandwa Kunene")
 
 # Required to let Streamlit instantiate our web app.  
 if __name__ == '__main__':
