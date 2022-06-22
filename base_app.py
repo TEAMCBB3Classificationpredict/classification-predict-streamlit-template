@@ -61,7 +61,7 @@ def main():
 			st.write(raw[['sentiment', 'message']]) # will write the df to the page
 
 	# Building out the predication page
-	elif selection == "Prediction":
+	if selection == "Prediction":
 		st.info("Prediction with ML Models")
 		# Creating a text box for user input
 		tweet_text = st.text_area("Enter Text","enter your sentence / tweet here")
