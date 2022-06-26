@@ -102,17 +102,17 @@ def main():
 		#creating a category markdowns
 		st.info('Text Categories')
 		#different category class
-		st.markdown('**1** = **Pro**.')
+		st.markdown('**1** = **Pro/ Posetive**.')
 		st.markdown('**2**= **News**.')
-		st.markdown('**-1** = **Anti**.')
+		st.markdown('**-1** = **Anti/ Negative**.')
 		st.markdown('**0** = **Neutral**.')
 	# buidling a team page 	
 	if selection == "Team":
 		#team  name 
 		st.info("Team CBB3")
 		#team mates names 
-		st.markdown("Elewani Tshikovhi")
-		st.markdown("Katlego Maponya")
+		st.markdown("Elewani Tshikovhi: Team Learder")
+		st.markdown("Katlego Maponya: Team coordinater")
 		st.markdown("Sinethemba Nongqoto")
 		st.markdown("Musa Mashaba")
 		st.markdown("Desree Maleka")
