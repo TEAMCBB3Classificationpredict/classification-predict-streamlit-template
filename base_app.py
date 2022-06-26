@@ -28,6 +28,7 @@ import joblib,os
 
 # Data dependencies
 import pandas as pd
+from sympy import N
 
 # Vectorizer
 news_vectorizer = open("resources/TfidfVectorizer.pkl","rb")
@@ -49,14 +50,21 @@ def main():
 	# you can create multiple pages this way
 	options = ["Home","Prediction", "Information","Team"]
 	with st.sidebar:
-		st.title('Menu')
-		selection = st.radio("Choose Option", options)
+		st.title('Menu') #ctreating a menu function on the sidebar 
+		selection = st.radio("Choose Option", options)#creating a radio button for  different models
 	# Bulding the home page	
 	if selection == "Home":
-		st.info("Many companies are built around lessening one's environmental impact or carbon footprint."
-		"They offer products and services that are environmentally friendly and sustainable, in line with their values and ideals."
-		"They would like to determine how people perceive climate change and whether or not they believe it is a real threat."
+		st.info("Many companies are built around lessening one's environmental impact or carbon footprint."\n
+		"They offer products and services that are environmentally friendly and sustainable, in line with their values and ideals."\n
+		"They would like to determine how people perceive climate change and whether or not they believe it is a real threat."\n
 		"This would add to their market research efforts in gauging how their product/service may be received")
+
+		st.info ("Variable definitions."\n 
+		"sentiment: Sentiment of tweet"\n
+		"message: Tweet body"\n
+		"tweetid: Twitter unique id")
+
+	
 	# Building out the "Information" page
 	if selection == "Information":
 		st.info("General Information")
@@ -73,32 +81,36 @@ def main():
 		# Creating a text box for user input
 		tweet_text = st.text_area("Enter Text","enter your sentence / tweet here")
 		st.info('Which classifier  to run to get the results')
-		option = st.radio('ML models',('Logistic_Regression_classifier','GradientBoostingClassifier','SGDClassifier'))
+		option = st.radio('ML models',('Logistic_Regression_classifier','ComplementNB_Classifier','MultinomialNB_Classifier'))
 		# Transforming user input with vectorizer
 		vect_text = tweet_cv.transform([tweet_text]).toarray()
 		# Load your .pkl file with the model of your choice + make predictions
 		# Try loading in multiple models to give the user a choice
 		if option  =='Logistic_Regression_classifier':
-			logistic_regression_classifier = joblib.load(open(os.path.join("resources/logistic_regression_model.pkl"),"rb"))
+			logistic_regression_classifier = joblib.load(open(os.path.join("resources/LogisticRegression_model.pkl"),"rb"))
 			prediction = logistic_regression_classifier.predict(vect_text)
-		elif option  =='GradientBoostingClassifier':
-			GradientBoostingClassifier = joblib.load(open(os.path.join("resources/GradientBoostingClassifier_model.pkl"),"rb"))
-			prediction = GradientBoostingClassifier.predict(vect_text)
-		elif option  =='SGDClassifier':
-			SGDClassifier = joblib.load(open(os.path.join("resources/SGDClassifier_model.pkl"),"rb"))
-			prediction =SGDClassifier .predict(vect_text)	
+		elif option  =='ComplementNB_Classifier':
+			ComplementNB_Classifier = joblib.load(open(os.path.join("resources/ComplementNB_model.pkl"),"rb"))
+			prediction = ComplementNB_Classifier.predict(vect_text)
+		elif option  =='MultinomialNB_Classifier':
+			MultinomialNB_Classifier = joblib.load(open(os.path.join("resources/MultinomialNB_model.pkl"),"rb"))
+			prediction =MultinomialNB_Classifier .predict(vect_text)	
 		# When model has successfully run, will print prediction
 		# You can use a dictionary or similar structure to make this output
 		# more human interpretable.
 		st.success("Text Categorized as: {}".format(prediction))
+		#creating a category markdowns
 		st.info('Text Categories')
+		#different category class
 		st.markdown('**1** = **Pro**.')
 		st.markdown('**2**= **News**.')
 		st.markdown('**-1** = **Anti**.')
 		st.markdown('**0** = **Neutral**.')
-	#team mates names 	
+	# buidling a team page 	
 	if selection == "Team":
+		#team  name 
 		st.info("Team CBB3")
+		#team mates names 
 		st.markdown("Elewani Tshikovhi")
 		st.markdown("Katlego Maponya")
 		st.markdown("Sinethemba Nongqoto")
