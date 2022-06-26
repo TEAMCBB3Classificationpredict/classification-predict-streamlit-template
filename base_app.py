@@ -54,14 +54,14 @@ def main():
 		selection = st.radio("Choose Option", options)#creating a radio button for  different models
 	# Bulding the home page	
 	if selection == "Home":
-		st.info("Many companies are built around lessening one's environmental impact or carbon footprint."\n
-		"They offer products and services that are environmentally friendly and sustainable, in line with their values and ideals."\n
-		"They would like to determine how people perceive climate change and whether or not they believe it is a real threat."\n
+		st.info("Many companies are built around lessening one's environmental impact or carbon footprint.\n"
+		"They offer products and services that are environmentally friendly and sustainable, in line with their values and ideals.\n"
+		"They would like to determine how people perceive climate change and whether or not they believe it is a real threat.\n"
 		"This would add to their market research efforts in gauging how their product/service may be received")
 
-		st.info ("Variable definitions."\n 
-		"sentiment: Sentiment of tweet"\n
-		"message: Tweet body"\n
+		st.info ("Variable definitions.\n" 
+		"sentiment: Sentiment of tweet\n"
+		"message: Tweet body \n"
 		"tweetid: Twitter unique id")
 
 	
@@ -81,7 +81,7 @@ def main():
 		# Creating a text box for user input
 		tweet_text = st.text_area("Enter Text","enter your sentence / tweet here")
 		st.info('Which classifier  to run to get the results')
-		option = st.radio('ML models',('Logistic_Regression_classifier','ComplementNB_Classifier','MultinomialNB_Classifier'))
+		option = st.radio('ML models',('Logistic_Regression_classifier','ComplementNB_Classifier','RandomForestClassifier_Classifier'))
 		# Transforming user input with vectorizer
 		vect_text = tweet_cv.transform([tweet_text]).toarray()
 		# Load your .pkl file with the model of your choice + make predictions
@@ -92,9 +92,9 @@ def main():
 		elif option  =='ComplementNB_Classifier':
 			ComplementNB_Classifier = joblib.load(open(os.path.join("resources/ComplementNB_model.pkl"),"rb"))
 			prediction = ComplementNB_Classifier.predict(vect_text)
-		elif option  =='MultinomialNB_Classifier':
-			MultinomialNB_Classifier = joblib.load(open(os.path.join("resources/MultinomialNB_model.pkl"),"rb"))
-			prediction =MultinomialNB_Classifier .predict(vect_text)	
+		elif option  =='RandomForestClassifier_Classifier':
+			RandomForestClassifier_Classifier= joblib.load(open(os.path.join("resources/RandomForestClassifier_model.pkl"),"rb"))
+			prediction =RandomForestClassifier_Classifier.predict(vect_text)	
 		# When model has successfully run, will print prediction
 		# You can use a dictionary or similar structure to make this output
 		# more human interpretable.
