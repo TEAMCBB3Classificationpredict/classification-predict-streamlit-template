@@ -81,7 +81,7 @@ def main():
 		# Creating a text box for user input
 		tweet_text = st.text_area("Enter Text","enter your sentence / tweet here")
 		st.info('Which classifier  to run to get the results')
-		option = st.radio('ML models',('Logistic_Regression_classifier','ComplementNB_Classifier','RandomForestClassifier_Classifier'))
+		option = st.radio('ML models',('Logistic_Regression_classifier','KNNeighbor_sClassifier','RandomForestClassifier_Classifier'))
 		# Transforming user input with vectorizer
 		vect_text = tweet_cv.transform([tweet_text]).toarray()
 		# Load your .pkl file with the model of your choice + make predictions
@@ -89,9 +89,9 @@ def main():
 		if option  =='Logistic_Regression_classifier':
 			logistic_regression_classifier = joblib.load(open(os.path.join("resources/LogisticRegression_model.pkl"),"rb"))
 			prediction = logistic_regression_classifier.predict(vect_text)
-		elif option  =='ComplementNB_Classifier':
-			ComplementNB_Classifier = joblib.load(open(os.path.join("resources/ComplementNB_model.pkl"),"rb"))
-			prediction = ComplementNB_Classifier.predict(vect_text)
+		elif option  =='KNNeighbors_Classifier':
+			KNNeighbors_Classifier = joblib.load(open(os.path.join("resources/ComplementNB_model.pkl"),"rb"))
+			prediction = KNNeighbors_Classifier.predict(vect_text)
 		elif option  =='RandomForestClassifier_Classifier':
 			RandomForestClassifier_Classifier= joblib.load(open(os.path.join("resources/RandomForestClassifier_model.pkl"),"rb"))
 			prediction =RandomForestClassifier_Classifier.predict(vect_text)	
