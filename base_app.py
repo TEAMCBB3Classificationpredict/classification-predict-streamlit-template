@@ -107,7 +107,7 @@ def main():
 		#team  name 
 		st.info("Team CBB3")
 		#team mates names 
-		st.markdown("Elewani Tshikovhi: Team Learder")
+		st.markdown("Elewani Tshikovhi: Team Leader")
 		st.markdown("Katlego Maponya: Team coordinater")
 		st.markdown("Sinethemba Nongqoto")
 		st.markdown("Musa Mashaba")
