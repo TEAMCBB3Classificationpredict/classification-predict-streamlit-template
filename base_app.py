@@ -90,7 +90,7 @@ def main():
 			logistic_regression_classifier = joblib.load(open(os.path.join("resources/LogisticRegression_model.pkl"),"rb"))
 			prediction = logistic_regression_classifier.predict(vect_text)
 		elif option  =='KNNeighbors_Classifier':
-			KNNeighbors_Classifier = joblib.load(open(os.path.join("resources/ComplementNB_model.pkl"),"rb"))
+			KNNeighbors_Classifier = joblib.load(open(os.path.join("resources/KNeighborsClassifier_model.pkl"),"rb"))
 			prediction = KNNeighbors_Classifier.predict(vect_text)
 		elif option  =='RandomForestClassifier_Classifier':
 			RandomForestClassifier_Classifier= joblib.load(open(os.path.join("resources/RandomForestClassifier_model.pkl"),"rb"))
@@ -102,9 +102,9 @@ def main():
 		#creating a category markdowns
 		st.info('Text Categories')
 		#different category class
-		st.markdown('**1** = **Pro/ Posetive**.')
+		st.markdown('**1** = **Pro/Posetive**.')
 		st.markdown('**2**= **News**.')
-		st.markdown('**-1** = **Anti/ Negative**.')
+		st.markdown('**-1** = **Anti/Negative**.')
 		st.markdown('**0** = **Neutral**.')
 	# buidling a team page 	
 	if selection == "Team":
