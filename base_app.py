@@ -58,8 +58,8 @@ def main():
 		st.info("Many companies are built around lessening one's environmental impact or carbon footprint.\n"
 		"They offer products and services that are environmentally friendly and sustainable, in line with their values and ideals.\n"
 		"They would like to determine how people perceive climate change and whether or not they believe it is a real threat.\n"
-		"This would add to their market research efforts in gauging how their product/service may be received")
-	
+		"This would add to their market research efforts in gauging how their product/service may be received.")
+		st.info("This app is designed to classify which category does the tweet/text fall under .")
 	# Building out the "Information" page
 	if selection == "Information":
 		st.info("General Information")
