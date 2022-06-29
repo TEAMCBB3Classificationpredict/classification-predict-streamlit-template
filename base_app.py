@@ -89,7 +89,7 @@ def main():
 			prediction = KNNeighbors_Classifier.predict(vect_text)
 		elif option  =='RandomForestClassifier_Classifier':
 			RandomForestClassifier_Classifier= joblib.load(open(os.path.join("resources/RandomForestClassifier_model.pkl"),"rb"))
-			prediction =RandomForestClassifier_Classifier.predict(vect_text)	
+			prediction = RandomForestClassifier_Classifier.predict(vect_text)	
 		# When model has successfully run, will print prediction
 		# You can use a dictionary or similar structure to make this output
 		# more human interpretable.
@@ -97,7 +97,7 @@ def main():
 		#creating a category markdowns
 		st.info('Text Categories')
 		#different category class
-		st.markdown('**1** = **Pro/Posetive**.')
+		st.markdown('**1** = **Pro/Positive**.')
 		st.markdown('**2**= **News**.')
 		st.markdown('**-1** = **Anti/Negative**.')
 		st.markdown('**0** = **Neutral**.')
@@ -108,7 +108,7 @@ def main():
 		st.info("Team CBB3")
 		#team mates names 
 		st.markdown("Elewani Tshikovhi: Team Leader")
-		st.markdown("Katlego Maponya: Team coordinater")
+		st.markdown("Katlego Maponya: Team coordinator")
 		st.markdown("Sinethemba Nongqoto")
 		st.markdown("Musa Mashaba")
 		st.markdown("Desree Maleka")
