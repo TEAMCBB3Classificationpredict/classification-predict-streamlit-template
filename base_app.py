@@ -50,8 +50,8 @@ def main():
 	# you can create multiple pages this way
 	options = ["Home","Prediction", "Information","Team"]
 	with st.sidebar:
-		st.title('Menu') #ctreating a menu function on the sidebar 
-		selection = st.selectbox("Choose Option", options)#creating a radio button for  different models
+		st.title('Menu') #creating a menu function on the sidebar 
+		selection = st.sidebar.radio("Choose Option", options)#creating a radio button for  side bar menu
 	
 	# Bulding the home page	
 	if selection == "Home":
@@ -76,7 +76,8 @@ def main():
 		# Creating a text box for user input
 		tweet_text = st.text_area("Enter Text","enter your sentence / tweet here")
 		st.info('Which classifier  to run to get the results')
-		option = st.radio('ML models',('Logistic_Regression_classifier','KNNeighbors_Classifier','RandomForestClassifier_Classifier'))
+		#creating a selectionbox for 3 models
+		option = st.selectbox('ML models',('Logistic_Regression_classifier','KNNeighbors_Classifier','RandomForestClassifier_Classifier'))
 		# Transforming user input with vectorizer
 		vect_text = tweet_cv.transform([tweet_text]).toarray()
 		# Load your .pkl file with the model of your choice + make predictions
