@@ -58,8 +58,8 @@ def main():
 		st.info("Many companies are built around lessening one's environmental impact or carbon footprint.\n"
 		"They offer products and services that are environmentally friendly and sustainable, in line with their values and ideals.\n"
 		"They would like to determine how people perceive climate change and whether or not they believe it is a real threat.\n"
-		"This would add to their market research efforts in gauging how their product/service may be received.")
-		st.info("This app is designed to classify which category does the tweet/text fall under .")
+		"This would add to their market research efforts in gauging how their product/service may be received.\n\n" 
+		"This app is designed to classify which category does the tweet/text fall under .")
 	# Building out the "Information" page
 	if selection == "Information":
 		st.info("General Information")
@@ -80,36 +80,38 @@ def main():
 		option = st.selectbox('ML models',('Logistic_Regression_classifier','KNNeighbors_Classifier','RandomForestClassifier_Classifier'))
 		# Transforming user input with vectorizer
 		vect_text = tweet_cv.transform([tweet_text]).toarray()
-		# Load your .pkl file with the model of your choice + make predictions
-		# Try loading in multiple models to give the user a choice
-		if option  =='Logistic_Regression_classifier':
-			logistic_regression_classifier = joblib.load(open(os.path.join("resources/LogisticRegression_model.pkl"),"rb"))
-			prediction = logistic_regression_classifier.predict(vect_text)
-		elif option  =='KNNeighbors_Classifier':
-			KNNeighbors_Classifier = joblib.load(open(os.path.join("resources/KNeighborsClassifier_model.pkl"),"rb"))
-			prediction = KNNeighbors_Classifier.predict(vect_text)
-		elif option  =='RandomForestClassifier_Classifier':
-			RandomForestClassifier_Classifier= joblib.load(open(os.path.join("resources/RandomForestClassifier_model.pkl"),"rb"))
-			prediction = RandomForestClassifier_Classifier.predict(vect_text)	
+		if st.button("Classify"):
+			# Load your .pkl file with the model of your choice + make predictions
+			# Try loading in multiple models to give the user a choice
+			if option  =='Logistic_Regression_classifier':
+				logistic_regression_classifier = joblib.load(open(os.path.join("resources/LogisticRegression_model.pkl"),"rb"))
+				prediction = logistic_regression_classifier.predict(vect_text)
+			elif option  =='KNNeighbors_Classifier':
+				KNNeighbors_Classifier = joblib.load(open(os.path.join("resources/KNeighborsClassifier_model.pkl"),"rb"))
+				prediction = KNNeighbors_Classifier.predict(vect_text)
+			elif option  =='RandomForestClassifier_Classifier':
+				RandomForestClassifier_Classifier= joblib.load(open(os.path.join("resources/RandomForestClassifier_model.pkl"),"rb"))
+				prediction = RandomForestClassifier_Classifier.predict(vect_text)	
 		# When model has successfully run, will print prediction
 		# You can use a dictionary or similar structure to make this output
 		# more human interpretable.
-		st.success("Text Categorized as: {}".format(prediction))
-		#creating a category markdowns
-		st.info('Text Categories')
-		#different category class
-		st.markdown('**1** = **Pro/Positive**.')
-		st.markdown('**2**= **News**.')
-		st.markdown('**-1** = **Anti/Negative**.')
-		st.markdown('**0** = **Neutral**.')
+			res = prediction
+			if res ==  1:
+				st.success("Pro: The tweet supports the belief of man-made climate change")
+			elif res == 2:
+				st.success("News: the tweet links to factual news about climate change")
+			elif res == 0:
+				st.success("Neutral: the tweet neither supports nor refutes the belief of man-made climate change")
+			elif res  == -1:
+				st.success ("Anti: the tweet does not believe in man-made climate change")
 	
 	# buidling a team page 	
 	if selection == "Team":
 		#team  name 
 		st.info("Team CBB3")
 		#team mates names 
-		st.markdown("Elewani Tshikovhi: Team Leader")
-		st.markdown("Katlego Maponya: Team coordinator")
+		st.markdown("Elewani Tshikovhi - Team Leader")
+		st.markdown("Katlego Maponya - Team coordinator")
 		st.markdown("Sinethemba Nongqoto")
 		st.markdown("Musa Mashaba")
 		st.markdown("Desree Maleka")
