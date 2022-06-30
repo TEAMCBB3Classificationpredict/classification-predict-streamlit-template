@@ -30,6 +30,9 @@ import joblib,os
 import pandas as pd
 from sympy import N
 
+import streamlit as st
+
+from PIL import Image
 # Vectorizer
 news_vectorizer = open("resources/TfidfVectorizer.pkl","rb")
 tweet_cv = joblib.load(news_vectorizer) # loading your vectorizer from the pkl file
@@ -45,7 +48,9 @@ def main():
 	# these are static across all pages
 	st.title("Tweet Classifier")
 	st.subheader("Climate change tweet classification")
+	#From URL
 
+	st.image("https://th.bing.com/th/id/OIP.Q7bHdbi3BDTIJ5qFuYElzAHaFC?w=275&h=187&c=7&r=0&o=5&dpr=1.25&pid=1.7.jpg%100")
 	# Creating sidebar with selection box -
 	# you can create multiple pages this way
 	options = ["Home","Prediction", "Information","Team"]
